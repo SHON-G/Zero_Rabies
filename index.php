@@ -1,3 +1,53 @@
+
+<?php
+ 
+require 'connection.php';
+
+if(isset($_POST["submit"])){
+    $owner_name =$_POST["owner_name"];
+    $medical_name =$_POST["medical_name"];
+    $medical_location =$_POST["medical_location"];
+    $google_maps_id =$_POST["google_maps_id"];
+    $lat_long =$_POST["lat_long"];
+    $state =$_POST["state"];
+    $city =$_POST["city"];
+    $local_area_address =$_POST["local_area_address"];
+    
+    $RABIVAX = isset($_POST["RABIVAX"]) ? $_POST["RABIVAX"] : "no"; 
+    $RABIPUR = isset($_POST["RABIPUR"]) ? $_POST["RABIPUR"] : "no";
+    $Abhayrab = isset($_POST["Abhayrab"]) ? $_POST["Abhayrab"] : "no";
+    $AbhayrabPF = isset($_POST["AbhayrabPF"]) ? $_POST["AbhayrabPF"] : "no";
+    $ChiroRab = isset($_POST["ChiroRab"]) ? $_POST["ChiroRab"] : "no";
+    $Zuvirab = isset($_POST["Zuvirab"]) ? $_POST["Zuvirab"] : "no";
+    $Surerab = isset($_POST["Surerab"]) ? $_POST["Surerab"] : "no";
+    $BERAB = isset($_POST["BERAB"]) ? $_POST["BERAB"] : "no";
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    $query = "INSERT INTO trialproject VALUES('','$owner_name','$medical_name','$medical_location','$google_maps_id','$lat_long','$state','$city','$local_area_address','$RABIVAX','$RABIPUR','$Abhayrab','$AbhayrabPF','$ChiroRab','$Zuvirab','$Surerab','$BERAB')";
+
+    mysqli_query($conn, $query);
+    
+    header("Location: thankyou.php");
+    exit(); 
+   
+}
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -91,7 +141,7 @@
                     <th>Sr. No</th>
                     <th>Name</th>
                     <th>Manufacturer</th>
-                    <th class="imgtd">Image</th>
+                    <!-- <th class="imgtd">Image</th> -->
                     <th>Check</th>
                 </tr>
             </thead>
@@ -101,7 +151,7 @@
     <td>1</td>
     <td>RABIVAX-S</td>
     <td>Serum Institute of India Pvt. Ltd.</td>
-    <td class="imgtd"><img src="a1.jpg" alt="RABIVAX" style="height: 100px; width: 100px;"></td>
+    <!-- <td class="imgtd"><img src="a1.jpg" alt="RABIVAX" style="height: 100px; width: 100px;"></td> -->
     <td>
         <input type="checkbox" id="RABIVAX_yes" name="RABIVAX" value="yes" >
         <label for="RABIVAX_yes">Yes</label>
@@ -110,130 +160,97 @@
     </td>
 </tr>
 
-                <!-- <tr> -->
-                    <!-- <td>2</td>
+                <tr>                     <td>2</td>
                     <td>RABIPUR</td>
                     <td>Glaxo SmithKline Pharmaceuticals Ltd.</td>
-                    <td><img src="a1.jpg" alt="RABIPUR" style="height: 100px; width: 100px;"></td>
+                    <!-- <td class="imgtd"><img src="a1.jpg" alt="RABIPUR" style="height: 100px; width: 100px;"></td> -->
                     <td>
-                        <input type="radio" id="RABIPUR_yes" name="med2" value="yes" checked>
-                        <label for="med2_yes">Yes</label>
-                        <input type="radio" id="RABIPUR_no" name="med2" value="no">
-                        <label for="med2_no">No</label>
+                        <input type="checkbox" id="RABIPUR" name="RABIPUR" value="yes" >
+                        <label for="RABIPUR_yes">Yes</label>
+                        <input type="checkbox" id="RABIPUR" name="RABIPUR" value="no">
+                        <label for="RABIPUR_no">No</label>
                     </td>
                 </tr>
                 <tr>
                     <td>3</td>
                     <td>Abhayrab</td>
                     <td>Indian Immunologicals Ltd.</td>
-                    <td><img src="a1.jpg" alt="Abhayrab" style="height: 100px; width: 100px;"></td>
+                    <!-- <td class="imgtd"><img src="a1.jpg" alt="Abhayrab" style="height: 100px; width: 100px;"></td> -->
                     <td>
-                        <input type="radio" id="Abhayrab_yes" name="med3" value="yes" checked>
-                        <label for="med3_yes">Yes</label>
-                        <input type="radio" id="Abhayrab_no" name="med3" value="no">
-                        <label for="med3_no">No</label>
+                        <input type="checkbox" id="Abhayrab" name="Abhayrab" value="yes" >
+                        <label for="Abhayrab_yes">Yes</label>
+                        <input type="checkbox" id="Abhayrab" name="Abhayrab" value="no">
+                        <label for="Abhayrab_no">No</label>
                     </td>
                 </tr>
                 <tr>
                     <td>4</td>
-                    <td>Abhayrab-PF</td>
-                    <td>Indian Immunologicals Ltd.</td>
-                    <td><img src="a1.jpg" alt="Abhayrab-PF" style="height: 100px; width: 100px;"></td>
+                    <td>AbhayrabPF</td>
+                    <td >Indian Immunologicals Ltd.</td>
+                    <!-- <td class="imgtd"><img src="a1.jpg" alt="AbhayrabPF" style="height: 100px; width: 100px;"></td> -->
                     <td>
-                        <input type="radio" id="bhayrab-PF_yes" name="med4" value="yes" checked>
-                        <label for="med4_yes">Yes</label>
-                        <input type="radio" id="bhayrab-PF_no" name="med4" value="no">
-                        <label for="med4_no">No</label>
+                        <input type="checkbox" id="bhayrabPF" name="AbhayrabPF" value="yes" >
+                        <label for="AbhayrabPF_yes">Yes</label>
+                        <input type="checkbox" id="bhayrabPF" name="AbhayrabPF" value="no">
+                        <label for="AbhayrabPF_no">No</label>
                     </td>
                 </tr>
                 <tr>
                     <td>5</td>
                     <td>ChiroRab</td>
-                    <td>Chiron Behring Vaccines Pvt. Ltd.</td>
-                    <td><img src="a1.jpg" alt="ChiroRab" style="height: 100px; width: 100px;"></td>
+                    <td >Chiron Behring Vaccines Pvt. Ltd.</td>
+                    <!-- <td class="imgtd"><img src="a1.jpg" alt="ChiroRab" style="height: 100px; width: 100px;"></td> -->
                     <td>
-                        <input type="radio" id="ChiroRab_yes" name="med5" value="yes" checked>
-                        <label for="med5_yes">Yes</label>
-                        <input type="radio" id="ChiroRab_no" name="med5" value="no">
-                        <label for="med5_no">No</label>
+                        <input type="checkbox" id="ChiroRab" name="ChiroRab" value="yes" >
+                        <label for="ChiroRab_yes">Yes</label>
+                        <input type="checkbox" id="ChiroRab" name="ChiroRab" value="no">
+                        <label for="ChiroRab_no">No</label>
                     </td>
                 </tr>
                 <tr>
                     <td>6</td>
                     <td>Zuvirab</td>
-                    <td>Zuventus Healthcare Ltd.</td>
-                    <td><img src="a1.jpg" alt="Zuvirab" style="height: 100px; width: 100px;"></td>
+                    <td >Zuventus Healthcare Ltd.</td>
+                    <!-- <td class="imgtd"><img src="a1.jpg" alt="Zuvirab" style="height: 100px; width: 100px;"></td> -->
                     <td>
-                        <input type="radio" id="Zuvirab_yes" name="med6" value="yes" checked>
-                        <label for="med6_yes">Yes</label>
-                        <input type="radio" id="Zuvirab_no" name="med6" value="no">
-                        <label for="med6_no">No</label>
+                        <input type="checkbox" id="Zuvirab" name="Zuvirab" value="yes" >
+                        <label for="Zuvirab_yes">Yes</label>
+                        <input type="checkbox" id="Zuvirab" name="Zuvirab" value="no">
+                        <label for="Zuvirab_no">No</label>
                     </td>
                 </tr>
                 <tr>
                     <td>7</td>
                     <td>Surerab</td>
-                    <td>Bio-Med Pvt. Ltd.</td>
-                    <td><img src="a1.jpg" alt="Surerab" style="height: 100px; width: 100px;"></td>
+                    <td >Bio-Med Pvt. Ltd.</td>
+                    <!-- <td class="imgtd"><img src="a1.jpg" alt="Surerab" style="height: 100px; width: 100px;"></td> -->
                     <td>
-                        <input type="radio" id="Surerab_yes" name="med7" value="yes" checked>
-                        <label for="med7_yes">Yes</label>
-                        <input type="radio" id="Surerab_no" name="med7" value="no">
-                        <label for="med7_no">No</label>
+                        <input type="checkbox" id="Surerab" name="Surerab" value="yes" >
+                        <label for="Surerab_yes">Yes</label>
+                        <input type="checkbox" id="Surerab" name="Surerab" value="no">
+                        <label for="Surerab_no">No</label>
                     </td>
                 </tr>
                 <tr>
                     <td>8</td>
                     <td>BERAB</td>
-                    <td>Biological E Ltd.</td>
-                    <td><img src="a1.jpg" alt="BERAB" style="height: 100px; width: 100px;"></td>
+                    <td >Biological E Ltd.</td>
+                    <!-- <td class="imgtd"><img src="a1.jpg" alt="BERAB" style="height: 100px; width: 100px;"></td> -->
                     <td>
-                        <input type="radio" id="BERAB_yes" name="med8" value="yes" checked>
-                        <label for="med8_yes">Yes</label>
-                        <input type="radio" id="BERAB_no" name="med8" value="no">
-                        <label for="med8_no">No</label>
+                        <input type="checkbox" id="BERAB_yes" name="BERAB" value="yes" >
+                        <label for="BERAB_yes">Yes</label>
+                        <input type="checkbox" id="BERAB_no" name="BERAB" value="no">
+                        <label for="BERAB_no">No</label>
                     </td>
-                </tr> -->
-                <!-- Add more rows for other medicines -->
+                </tr> 
             </tbody>
-        </table>
+        </table> 
 
-        <!-- Submit Button -->
-        <button type="submit" class="submit-button" name="submit">Submit</button>
+        
+        <button type="submit" class="submit-button" name="submit" >Submit</button>
+
     </form>
 </div>
 
-<?php
-require 'connection.php';
-
-if(isset($_POST["submit"])){
-    $owner_name =$_POST["owner_name"];
-    $medical_name =$_POST["medical_name"];
-    $medical_location =$_POST["medical_location"];
-    $google_maps_id =$_POST["google_maps_id"];
-    $lat_long =$_POST["lat_long"];
-    $state =$_POST["state"];
-    $city =$_POST["city"];
-    $local_area_address =$_POST["local_area_address"];
-    // $RABIVAX =$_POST["RABIVAX"];
-    // to take input as radio yes or no
-    // $RABIVAX-S_yes =$_POST["RABIVAX-S"];
-    // $RABIVAX-S_no =$_POST["RABIVAX-S"];
-    $RABIVAX = isset($_POST["RABIVAX"]) ? $_POST["RABIVAX"] : "no"; // Default to "no" if not checked
-
-
-
-
-    
-
-    $query = "INSERT INTO trial VALUES('','$owner_name',' $medical_name','$medical_location','$google_maps_id','$lat_long','$state','$city','$local_area_address','$RABIVAX')";
-    mysqli_query($conn, $query);
-    echo
-    "
-    <script> alert('Data Inserted Succesfull');</script>
-
-    ";
-}
-?>
 </body>
 </html>
